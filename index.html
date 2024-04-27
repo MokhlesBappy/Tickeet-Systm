@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -130,7 +131,7 @@
                                             <option value="Chittagong">Chittagong</option>
                                             <option value="Barisal">Barisal</option>
                                             <option value="Rajshahi">Rajshahi</option>
-                                            <option value="Rajshahi">Chapainawabganj</option>
+                                            <option value="Chapainawabganj">Chapainawabganj</option>
                                         </datalist>
 
                                 </div>
@@ -152,7 +153,7 @@
                                             <option value="Chittagong">Chittagong</option>
                                             <option value="Barisal">Barisal</option>
                                             <option value="Rajshahi">Rajshahi</option>
-                                            <option value="Rajshahi">Chapainawabganj</option>
+                                            <option value="Chapainawabganj">Chapainawabganj</option>
                                         </datalist>
                             </div>
                         </div>
@@ -163,7 +164,7 @@
                             <div class="pl-2 lg:pl-8 overflow-hidden">
                                 <input
                                     type="date"
-                                    id="date"
+                                    id="input3"
                                     name="date"
                                     class="border rounded bg-transparent outline-none border-hidden"
                                 />
@@ -174,7 +175,7 @@
                             <div class="pl-2 lg:pl-8 text-gray-400 overflow-hidden">
                                 <input
                                 type="date"
-                                id="date"
+                                id="input4"
                                 name="date"
                                 class="border rounded bg-transparent outline-none border-hidden"
                             />
@@ -233,7 +234,7 @@
                         </button>
                     </div>
                     <div class="w-full min-h-7 flex justify-center">
-                        <button id="loadButton" onclick="loadData()" class="bg-red-600 text-white py-2 px-12 rounded-md translate-y-11 font-bold hover:bg-red-500">
+                        <button id="submitButton" class="bg-red-600 text-white py-2 px-12 rounded-md translate-y-11 font-bold hover:bg-red-500">
                           Search Bus
                         </button>
                       </div>
@@ -243,15 +244,17 @@
 </section>
 
 <section id="resultshow">
-    <div style="margin-top: 500px;">
+    <div style="margin-top: 450px;">
         <!-- <button id="loadButton" onclick="loadData()">Load Data</button> -->
         <div id="loader" class="loader" style="display:none;"></div>
         <div id="result" style="display:none;"></div>
+
+        <center><div id="output" class="text-2xl w-[400px] font-bold text-[#CA8787] gap-2"></div></center>
         </div>
 </section>
         
         
-<script>
+<!-- <script>
           function loadData() {
           // Show loader
           document.getElementById("loader").style.display = "block";
@@ -266,7 +269,7 @@
             document.getElementById("result").innerText = `Ticket data loaded successfully! Date: 22/04/2024 Dhaka to Chittagong Hanif AC Price tk- 2000 Time 6:30 am`;
           }, 2000); // Simulating 2 seconds of processing time
         }
-</script>
+</script> -->
     
 
 <script>
@@ -274,6 +277,7 @@
         const fromInput = document.querySelector('#fromInput');
         const toInput = document.querySelector('#toInput');
         const swapButton = document.querySelector('#swapButton');
+        
   
         // Add event listener to the swap button
         swapButton.addEventListener('click', () => {
@@ -282,9 +286,53 @@
         const temp = fromInput.value;
         fromInput.value = toInput.value;
         toInput.value = temp;
-        });
-  
         
+        });
+
+        // function showData(){
+        //  var InputData =document.getElementById("fromInput").value;
+        //  document.getElementById("result").innerHTML=InputData;
+         
+        // }
+        
+    //    var from = document.getElementById("fromInput").value;
+    //    var to = document.getElementById("toInput").value;
+    //    var date = document.getElementById("input4").value;
+
+    //    document.getElementById("output").innerHTML = `
+    //   <p>From: ${from}</p>
+    //   <p>To: ${to}</p>
+    //   <p>Date: ${date}</p>
+    // `;
+
+    document.getElementById("submitButton").addEventListener("click", function() {
+  // Show loader
+  document.getElementById("loader").style.display = "block";
+
+  // Simulate a delay (2 seconds) for processing
+  setTimeout(function() {
+    // Hide loader
+    document.getElementById("loader").style.display = "none";
+
+    // Get values from input fields
+    var from = document.getElementById("fromInput").value;
+    var to = document.getElementById("toInput").value;
+    var date = document.getElementById("input3").value;
+
+    // Display selected values
+    document.getElementById("output").innerHTML = `
+      <p>From: ${from}</p>
+      <p>To: ${to}</p>
+      <p>Date: ${date}</p>
+    `;
+
+    // Show output
+    document.getElementById("output").classList.remove("hidden");
+  }, 2000);
+});
+  
+        document.getElementById("input3").min = new Date().toISOString().split('T')[0];
+        document.getElementById("input4").min = new Date().toISOString().split('T')[0];
 </script>
     
     
